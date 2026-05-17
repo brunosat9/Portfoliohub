@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>portfolioHUB | Bruno Soares</title>
+  <meta name="description" content="Portfólio profissional digital de Bruno Soares, estudante de Ciências de Dados e Machine Learning." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --card: #ffffff;
+      --muted: #64748b;
+      --text: #0f172a;
+      --soft: #f8fafc;
+      --line: #e2e8f0;
+      --brand: #7c3aed;
+      --brand2: #06b6d4;
+      --brand3: #ec4899;
+      --good: #059669;
+      --shadow: 0 18px 45px rgba(15, 23, 42, .12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 45%, #f8fafc 100%);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(248, 250, 252, .86);
+      border-bottom: 1px solid rgba(226, 232, 240, .8);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      gap: 18px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 850;
+      letter-spacing: -.04em;
+      font-size: 1.08rem;
+    }
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 25px rgba(124, 58, 237, .28);
+    }
+    .menu { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .menu a {
+      font-size: .92rem;
+      color: #334155;
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+    .menu a:hover { background: #eef2ff; color: var(--brand); }
+
+    .hero {
+      color: white;
+      background:
+        radial-gradient(circle at top left, rgba(6, 182, 212, .33), transparent 35%),
+        radial-gradient(circle at top right, rgba(236, 72, 153, .28), transparent 34%),
+        linear-gradient(135deg, #0f172a, #1e1b4b 65%, #312e81);
+      padding: 74px 0 62px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero:after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 340px;
+      height: 340px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, .24), rgba(6, 182, 212, .22));
+      border-radius: 50%;
+      filter: blur(4px);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      align-items: center;
+      gap: 34px;
+      position: relative;
+      z-index: 2;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #dbeafe;
+      font-size: .9rem;
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.35rem, 6vw, 5rem);
+      line-height: .95;
+      letter-spacing: -.075em;
+    }
+    .subtitle {
+      font-size: 1.16rem;
+      color: #e2e8f0;
+      max-width: 760px;
+      margin: 0 0 24px;
+    }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 12px 17px;
+      font-weight: 750;
+      border: 1px solid rgba(255,255,255,.2);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn.primary { background: white; color: #111827; box-shadow: 0 18px 35px rgba(0,0,0,.18); }
+    .btn.secondary { color: white; background: rgba(255,255,255,.08); }
+    .btn:hover { transform: translateY(-2px); }
+    .profile-card {
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 34px;
+      padding: 22px;
+      box-shadow: 0 20px 55px rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+    }
+    .avatar {
+      height: 210px;
+      border-radius: 26px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.05)),
+        linear-gradient(135deg, var(--brand), var(--brand2));
+      display: grid;
+      place-items: center;
+      font-size: 4.5rem;
+      font-weight: 900;
+      letter-spacing: -.08em;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
+    }
+    .profile-card small { color: #cbd5e1; display: block; margin-top: 13px; }
+    .mini-list { display: grid; gap: 8px; margin-top: 18px; }
+    .mini-item {
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 16px;
+      padding: 10px 12px;
+      color: #e2e8f0;
+      font-size: .94rem;
+    }
+
+    section { padding: 70px 0; }
+    .section-head { margin-bottom: 26px; }
+    .tag {
+      display: inline-block;
+      color: var(--brand);
+      background: #ede9fe;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 750;
+      font-size: .86rem;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3.8vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -.055em;
+    }
+    .lead { color: var(--muted); max-width: 780px; margin: 12px 0 0; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin: 0 0 10px; font-size: 1.22rem; letter-spacing: -.02em; }
+    .card p { margin: 0 0 12px; color: #475569; }
+    .card ul { margin: 0; padding-left: 20px; color: #475569; }
+    .card li { margin: 6px 0; }
+    .timeline { position: relative; display: grid; gap: 14px; }
+    .timeline-item {
+      background: white;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--brand);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, .07);
+    }
+    .timeline-item strong { display: block; color: #111827; }
+    .timeline-item span { color: var(--muted); font-size: .95rem; }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+    .project:before {
+      content: "";
+      height: 7px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brand), var(--brand2), var(--brand3));
+      position: absolute;
+      top: 0; left: 22px; right: 22px;
+    }
+    .project h3 { margin-top: 12px; }
+    .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 16px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #e2e8f0;
+      padding: 6px 10px;
+      font-size: .82rem;
+      font-weight: 650;
+    }
+
+    .skill-card { background: linear-gradient(180deg, #ffffff, #f8fafc); }
+    .meter { height: 9px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin-top: 12px; }
+    .meter span { display: block; height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand2)); border-radius: 999px; }
+
+    .slides {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(220px, 1fr));
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+    }
+    .slide {
+      min-height: 260px;
+      border-radius: 26px;
+      padding: 22px;
+      background: linear-gradient(135deg, #111827, #312e81);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 18px 35px rgba(17, 24, 39, .18);
+    }
+    .slide:nth-child(2) { background: linear-gradient(135deg, #164e63, #0369a1); }
+    .slide:nth-child(3) { background: linear-gradient(135deg, #4c1d95, #be185d); }
+    .slide:nth-child(4) { background: linear-gradient(135deg, #14532d, #0f766e); }
+    .slide h3 { font-size: 1.5rem; line-height: 1.1; margin: 0; letter-spacing: -.04em; }
+    .slide p { color: #e2e8f0; margin: 10px 0 0; }
+    .slide .num { opacity: .5; font-weight: 900; font-size: 3rem; letter-spacing: -.08em; }
+
+    .quote {
+      position: relative;
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .quote:before {
+      content: "“";
+      position: absolute;
+      top: -28px;
+      left: 18px;
+      font-size: 5rem;
+      color: rgba(124, 58, 237, .18);
+      font-family: Georgia, serif;
+    }
+    .quote p { margin: 0 0 12px; color: #475569; }
+    .quote strong { color: #0f172a; }
+
+    .contact-box {
+      color: white;
+      background:
+        radial-gradient(circle at top right, rgba(236, 72, 153, .24), transparent 34%),
+        linear-gradient(135deg, #111827, #1e1b4b);
+      border-radius: 34px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, .25);
+    }
+    .contact-box h2 { color: white; }
+    .contact-box p { color: #dbeafe; }
+    .contact-links { display: grid; gap: 10px; }
+    .contact-links a, .contact-links span {
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 16px;
+      padding: 12px 14px;
+      color: white;
+      overflow-wrap: anywhere;
+    }
+
+    footer { padding: 30px 0 45px; color: #64748b; text-align: center; }
+
+    .print-note {
+      border: 1px dashed #c4b5fd;
+      background: #f5f3ff;
+      color: #5b21b6;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-top: 18px;
+      font-size: .95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .grid-2, .contact-box { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .menu { display: none; }
+      .hero { padding: 54px 0 44px; }
+      section { padding: 52px 0; }
+      .slides { grid-template-columns: repeat(4, 270px); }
+    }
+
+    @media print {
+      header, .cta-row, footer { display: none; }
+      body { background: white; }
+      .hero { color: #0f172a; background: white; padding: 30px 0; }
+      .profile-card, .contact-box { color: #0f172a; background: white; box-shadow: none; border: 1px solid #e2e8f0; }
+      .subtitle, .profile-card small, .mini-item, .contact-box p, .contact-links a, .contact-links span { color: #334155; background: white; border-color: #e2e8f0; }
+      section { padding: 28px 0; break-inside: avoid; }
+      .card, .quote { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="Voltar ao início">
+        <span class="logo-mark">H</span>
+        <span>portfolioHUB</span>
+      </a>
+      <nav class="menu" aria-label="Menu principal">
+        <a href="#perfil">Perfil</a>
+        <a href="#curriculo">Currículo</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#recomendacoes">Recomendações</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Portfólio Profissional Digital • Git/GitHub</div>
+          <h1>Bruno Soares</h1>
+          <p class="subtitle">
+            Estudante de Ciências de Dados e Machine Learning no CEUB, com interesse em tecnologia,
+            banco de dados, desenvolvimento de soluções digitais e aplicação de análise de dados ao futebol.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projetos">Ver projetos</a>
+            <a class="btn secondary" href="#contato">Entrar em contato</a>
+          </div>
+        </div>
+        <aside class="profile-card" aria-label="Resumo do perfil">
+          <div class="avatar" aria-label="Foto profissional: substituir este bloco por uma foto">BS</div>
+          <div class="mini-list">
+            <div class="mini-item">🎓 Ciências de Dados e Machine Learning - CEUB</div>
+            <div class="mini-item">💻 Python • SQL • Banco de Dados • GitHub</div>
+            <div class="mini-item">⚽ Interesse em futebol, análise tática e dados</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="perfil">
+      <div class="container grid-2">
+        <div class="section-head">
+          <span class="tag">Perfil pessoal</span>
+          <h2>Quem sou eu</h2>
+          <p class="lead">
+            Sou estudante de Ciências de Dados e Machine Learning, em formação acadêmica voltada para tecnologia,
+            programação, banco de dados e análise de informações. Tenho perfil curioso, analítico e gosto de aprender
+            de forma prática, conectando teoria com projetos aplicáveis ao mundo real.
+          </p>
+          <p class="lead">
+            Busco construir uma trajetória profissional na área de dados, com interesse especial em projetos que unam
+            tecnologia, tomada de decisão, organização de informações e análise de desempenho. Também estudo futebol
+            sob uma perspectiva técnica, especialmente análise tática, desempenho e uso de dados no esporte.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Informações de contato</h3>
+          <ul>
+            <li><strong>E-mail:</strong> brunosat9@sempreceub.com</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bruno-soares-85a5492b7/?skipRedirect=true" target="_blank" rel="noopener">https://www.linkedin.com/in/bruno-soares-85a5492b7/?skipRedirect=true</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/brunosat9" target="_blank" rel="noopener">https://github.com/brunosat9</a></li>
+            <li><strong>Localização:</strong> Brasília - DF</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="curriculo">
+      <div class="container">
+        <div class="section-head">
+          <span class="tag">Currículo</span>
+          <h2>Formação, experiências e objetivos</h2>
+          <p class="lead">Resumo organizado da minha trajetória acadêmica, habilidades e áreas de interesse profissional.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Formação acadêmica</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>Bacharelado em Ciências de Dados e Machine Learning</strong>
+                <span>CEUB • Em andamento</span>
+                <p>Formação voltada para programação, estatística, banco de dados, lógica computacional e uso de dados para resolver problemas.</p>
+              </div>
+              <div class="timeline-item">
+                <strong>Estudos complementares em análise de futebol</strong>
+                <span>CBF Academy, PFSA e Futebol Interativo • Formação complementar</span>
+                <p>Estudos sobre análise tática, leitura de jogo, desempenho, scouting e interpretação técnica do futebol.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Experiências e objetivos</h3>
+            <ul>
+              <li>Desenvolvimento de atividades acadêmicas com Python, lógica de programação e banco de dados.</li>
+              <li>Participação em projetos acadêmicos envolvendo modelagem de dados, requisitos e construção de protótipos.</li>
+              <li>Interesse em estágio nas áreas de dados, tecnologia, banco de dados, análise de negócios e futebol analytics.</li>
+              <li>Objetivo de evoluir tecnicamente em programação, SQL, Git/GitHub, visualização de dados e machine learning.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="container">
+        <div class="section-head">
+          <span class="tag">Projetos acadêmicos e profissionais</span>
+          <h2>Projetos desenvolvidos</h2>
+          <p class="lead">Projetos que representam minha evolução acadêmica e minha capacidade de aplicar conceitos na prática.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card project">
+            <h3>Match Control</h3>
+            <p>
+              Protótipo acadêmico de aplicativo de assistência aos cuidados de saúde, com foco em organização de medicamentos,
+              requisitos do sistema, modelo de dados e apresentação da solução.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Requisitos</span><span class="pill">Protótipo</span><span class="pill">MER</span>
+            </div>
+          </article>
+          <article class="card project">
+            <h3>Sistema de Banco de Dados para Farmácia</h3>
+            <p>
+              Projeto de modelagem de banco de dados para uma farmácia, incluindo levantamento de dados, regras de negócio,
+              entidades, relacionamentos, chaves primárias e estrangeiras.
+            </p>
+            <div class="pill-row">
+              <span class="pill">SQL</span><span class="pill">Banco de dados</span><span class="pill">MER</span>
+            </div>
+          </article>
+          <article class="card project">
+            <h3>Programas em Python</h3>
+            <p>
+              Resolução de exercícios de lógica de programação com Python, utilizando estruturas condicionais, laços de repetição,
+              listas, entrada de dados e organização de código.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Python</span><span class="pill">Lógica</span><span class="pill">Algoritmos</span>
+            </div>
+          </article>
+          <article class="card project">
+            <h3>Análise tática e dados no futebol</h3>
+            <p>
+              Estudos independentes sobre sistemas táticos, compactação, pressão, transições, ocupação de espaços e possibilidades
+              de uso de dados para apoiar análise de desempenho.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Futebol</span><span class="pill">Dados</span><span class="pill">Scouting</span>
+            </div>
+          </article>
+          <article class="card project">
+            <h3>portfolioHUB</h3>
+            <p>
+              Este portfólio digital foi desenvolvido para apresentar minha trajetória acadêmica, competências, projetos e objetivos,
+              utilizando estrutura web simples, responsiva e compatível com publicação no GitHub Pages.
+            </p>
+            <div class="pill-row">
+              <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">GitHub</span>
+            </div>
+          </article>
+          <article class="card project">
+            <h3>Próximos projetos</h3>
+            <p>
+              Pretendo desenvolver dashboards, análises exploratórias de dados, projetos em SQL e estudos de machine learning
+              aplicados a problemas reais, com documentação no GitHub.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Dashboards</span><span class="pill">Machine Learning</span><span class="pill">Portfólio</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <div class="container">
+        <div class="section-head">
+          <span class="tag">Habilidades e competências</span>
+          <h2>Principais habilidades</h2>
+          <p class="lead">Um resumo visual das minhas competências técnicas e comportamentais.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card skill-card">
+            <h3>Programação em Python</h3>
+            <p>Conhecimentos em lógica, variáveis, condicionais, laços, listas e resolução de problemas.</p>
+            <div class="meter"><span style="width: 68%"></span></div>
+          </div>
+          <div class="card skill-card">
+            <h3>Banco de Dados e SQL</h3>
+            <p>Modelagem conceitual, MER, chaves primárias, chaves estrangeiras e consultas básicas.</p>
+            <div class="meter"><span style="width: 62%"></span></div>
+          </div>
+          <div class="card skill-card">
+            <h3>Git e GitHub</h3>
+            <p>Organização de repositórios, publicação de projetos e documentação técnica inicial.</p>
+            <div class="meter"><span style="width: 55%"></span></div>
+          </div>
+          <div class="card skill-card">
+            <h3>Análise e pensamento crítico</h3>
+            <p>Facilidade para conectar informações, identificar padrões e interpretar problemas.</p>
+            <div class="meter"><span style="width: 78%"></span></div>
+          </div>
+          <div class="card skill-card">
+            <h3>Comunicação</h3>
+            <p>Capacidade de explicar ideias, apresentar trabalhos e transformar conceitos em linguagem clara.</p>
+            <div class="meter"><span style="width: 74%"></span></div>
+          </div>
+          <div class="card skill-card">
+            <h3>Aprendizado contínuo</h3>
+            <p>Interesse em evoluir profissionalmente por meio de estudos, projetos e prática.</p>
+            <div class="meter"><span style="width: 85%"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apresentacao">
+      <div class="container">
+        <div class="section-head">
+          <span class="tag">Apresentação visual</span>
+          <h2>Habilidades em formato de slides</h2>
+          <p class="lead">Cards visuais para destacar competências de maneira mais dinâmica dentro do portfólio.</p>
+        </div>
+        <div class="slides" aria-label="Slides de habilidades">
+          <div class="slide"><div><span class="num">01</span><h3>Dados como ferramenta de decisão</h3><p>Interesse em transformar informações em análises úteis para resolver problemas.</p></div></div>
+          <div class="slide"><div><span class="num">02</span><h3>Projetos acadêmicos práticos</h3><p>Aplicação de requisitos, modelagem, protótipos e organização de conteúdo.</p></div></div>
+          <div class="slide"><div><span class="num">03</span><h3>Base técnica em construção</h3><p>Python, SQL, GitHub, lógica de programação e banco de dados.</p></div></div>
+          <div class="slide"><div><span class="num">04</span><h3>Futebol e tecnologia</h3><p>Objetivo de conectar análise tática, desempenho, scouting e ciência de dados.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recomendacoes">
+      <div class="container">
+        <div class="section-head">
+          <span class="tag">Recomendações e testemunhos</span>
+          <h2>Feedbacks e validação</h2>
+          <p class="lead">Espaço reservado para depoimentos de professores, colegas e supervisores.</p>
+        </div>
+        <div class="grid-2">
+          <div class="quote">
+            <p>“Bruno demonstra interesse, dedicação e capacidade de aprender conteúdos novos, especialmente em projetos que envolvem tecnologia, organização de ideias e resolução de problemas.”</p>
+            <strong>Profissional da área de TI do TSE - Fábio Teixiera Trindade</strong>
+          </div>
+          <div class="quote">
+            <p>“Durante as atividades acadêmicas, apresentou boa participação, disposição para colaborar e preocupação em melhorar a qualidade das entregas.”</p>
+            <strong>Colega de projeto - Enzo Schumacher</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="outros">
+      <div class="container grid-2">
+        <div class="card">
+          <h3>Outras informações</h3>
+          <ul>
+            <li>Interesse em estágios na área de dados, tecnologia, análise de negócios e futebol analytics.</li>
+            <li>Busca por evolução em projetos práticos, dashboards e documentação de códigos no GitHub.</li>
+            <li>Participação em estudos, cursos e atividades acadêmicas voltadas ao desenvolvimento profissional.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Objetivo profissional</h3>
+          <p>
+            Desenvolver uma base sólida em ciência de dados, programação e banco de dados para atuar em projetos que conectem
+            tecnologia, análise de informações e tomada de decisão. Meu objetivo é construir um portfólio consistente e buscar
+            oportunidades de estágio que acelerem minha formação prática.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <span class="tag">Contato</span>
+            <h2>Vamos conversar?</h2>
+            <p>
+              Estou aberto a oportunidades de estágio, projetos acadêmicos, networking e experiências que contribuam para minha formação em dados e tecnologia.
+            </p>
+          </div>
+          <div class="contact-links">
+            <span>E-mail: brunosat9@sempreceub.com</span>
+            <a href="https://www.linkedin.com/in/bruno-soares-85a5492b7/?skipRedirect=true" target="_blank" rel="noopener">LinkedIn: https://www.linkedin.com/in/bruno-soares-85a5492b7/?skipRedirect=true</a>
+            <a href="https://github.com/brunosat9" target="_blank" rel="noopener">GitHub: https://github.com/brunosat9</a>
+            <a href="https://brunosat9.github.io/Portfoliohub/" target="_blank" rel="noopener">portfolioHUB: https://brunosat9.github.io/Portfoliohub/</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Bruno Soares • portfolioHUB • Desenvolvido para apresentação acadêmica e profissional.</p>
+    </div>
+  </footer>
+</body>
+</html>
